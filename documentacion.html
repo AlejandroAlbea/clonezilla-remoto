@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>documentacion.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="14---entrega-3-caso-pr%C3%A1ctico-3">1.4 - Entrega 3: Caso práctico 3</h1>
+<h4 id="resumen-de-la-tarea">Resumen de la tarea:</h4>
+<p>En esta entrega nos vamos a centrar en restaurar una imagen de nuestro repositorio sobre varios equipos nuevos.</p>
+<p>El objetivo es restaurar la imagen de la anterior práctica sobre dos máquinas al mismo tiempo VMR1 y VMR2. Recuerda que ha de tener mayor capacidad que el disco de la VM sobre la que se hizo la imagen.</p>
+<p>✨✨Recuerda revisar la rúbrica para saber cómo se va a evaluar.✨✨</p>
+<p>👌Recuerda marcar la tarea como entregada cuando hayas subido el vídeo (siempre antes de la hora límite).👌</p>
+<p>😡Pasada la fecha de entrega se considerará &quot;Tarea no entregada&quot;😡</p>
+<hr>
+<h2 id="objetivo-de-la-pr%C3%A1ctica">Objetivo de la práctica</h2>
+<h4 id="explicar-el-objetivo-de-la-pr%C3%A1ctica-y-presentar-un-diagrama-que-complete-la-explicaci%C3%B3n">Explicar el objetivo de la práctica y presentar un diagrama que complete la explicación</h4>
+<p>En esta prácitca como se encuentra citado arriba vamos a <strong>restaurar la imagen de la anterior práctica</strong> sobre dos máquinas al mismo tiempo VMR1 y VMR2.</p>
+<p>En primer lugar he creado la <strong>máquina VMS1</strong> que actua como <strong>servidor</strong> para propagar la imagen vía DHCP. En esta máquina adjuntaremos los siguientes discos:</p>
+<ol>
+<li>Disco de VMS1 (45GB)</li>
+<li>Disco de VMS2 (45GB)</li>
+<li>Repositorio (23GB)</li>
+<li>ISO de Clonezilla Lite</li>
+<li>ISO de DRBL</li>
+</ol>
+<p>En primer lugar iniciamos la máquina con la <strong>ISO de DRBL para entrar a GPARTED y crear tanto la tabla de particiones (GPT) como el sistema de archivos (NTFS)</strong> de los discos de VMR1 y VMR2. Una vez están preparados los discos los eliminamos del servidor y dejamos simplemente esto:</p>
+<ol>
+<li>Repositorio (23GB)</li>
+<li>ISO de Clonezilla Lite</li>
+</ol>
+<p>Ahora iniciamos de nuevo el servidor y comenzamos a realizar las configuraciones pertinentes que se mostrarán durante esta documentación, en las <strong>máquinas clientes</strong> hay que cambiar el orden de arranque y dejar simplemente vía <strong>red</strong>.</p>
+<p>Una vez todo restaurado con éxito podemos apagar el servidor e iniciar las máquinas con sus discos.</p>
+<h2 id="diagrama">Diagrama</h2>
+<p><img src="f591dd97-8e71-4aa2-8150-5995d0104c0b-1.png" alt="alt text"></p>
+<hr>
+<h2 id="preparaci%C3%B3n-de-vms1-vmr1-y-vmr2">PREPARACIÓN DE VMS1, VMR1 Y VMR2</h2>
+<h3 id="vms1-red">VMS1 <em>(Red)</em></h3>
+<p><img src="image.png" alt="alt text"></p>
+<h3 id="vms1-almacenamiento">VMS1 <em>(Almacenamiento)</em></h3>
+<p><img src="image-1.png" alt="alt text"></p>
+<hr>
+<h3 id="vmr1-red">VMR1 <em>(Red)</em></h3>
+<p><img src="image-3.png" alt="alt text"></p>
+<h3 id="vmr1-almacenamiento">VMR1 <em>(Almacenamiento)</em></h3>
+<p><img src="image-2.png" alt="alt text"></p>
+<hr>
+<h3 id="vmr2-red">VMR2 <em>(Red)</em></h3>
+<p><img src="image-4.png" alt="alt text"></p>
+<h3 id="vmr2-almacenamiento">VMR2 <em>(Almacenamiento)</em></h3>
+<blockquote>
+<p>VirtualBox:
+<img src="image-5.png" alt="alt text"></p>
+</blockquote>
+<blockquote>
+<p>Gparted:
+<img src="image-6.png" alt="alt text"></p>
+</blockquote>
+<h4 id="inicio-del-proceso-de-configuraci%C3%B3n-en-el-servidor">Inicio del proceso de configuración en el servidor:</h4>
+<blockquote>
+<p>Iniciamos Clonezilla en el servidor (VMS1)</p>
+</blockquote>
+<p><img src="{B129B443-C8A6-46DF-9335-27423BB84F87}.png" alt="alt text"></p>
+<blockquote>
+<p>En este paso debemos elegir que tipo de servicio queremos usar, en este caso iniciaremos Clonezilla Lite Server</p>
+</blockquote>
+<p><img src="{B8BE7659-A406-4C7C-833D-22CFAFFB239B}.png" alt="alt text"></p>
+<blockquote>
+<p>Elegimos el <strong>modo DHCP</strong> para propagar a las máquinas que se encuentren en estado PXE.</p>
+</blockquote>
+<p><img src="{AE6758C8-F878-4ED8-A5B5-105CF7C06AB6}.png" alt="alt text"></p>
+<blockquote>
+<p>¿Dónde se almacena el repositorio? En este caso en local ya que se encuentra adjuntado como disco a la máquina virtual.</p>
+</blockquote>
+<p><img src="{F9561E34-E186-4047-87F0-6818FF000DC2}.png" alt="alt text"></p>
+<blockquote>
+<p>Chequeo previo de la imagen para evitar errores que no nos permitan seguir con la restauración.</p>
+</blockquote>
+<p><img src="{8316BF14-636D-4C63-9A0D-0357FEA8E26A}.png" alt="alt text"></p>
+<blockquote>
+<p>Aquí marcamos la imagen a restaurar, en este caso es la única almacenada. En la parte inferior podemos ver las propiedades del repositorio</p>
+</blockquote>
+<p><img src="{6DEDE517-B79C-43BC-ADF6-5F0FAE8E1A15}.png" alt="alt text"></p>
+<blockquote>
+<p>En este caso el modo de despliegue será en multicast, así que marcamos la primera opción. Cabe recalcar que multicast es un modo en el que podemos enviar paquetes a la vez a varios dispositivos seleccionados.</p>
+</blockquote>
+<p><img src="{63C3A7FD-B3F9-4306-8F41-9B09FAC30F3E}.png" alt="alt text"></p>
+<blockquote>
+<p>Restauramos la imagen al disco completo de los clientes</p>
+</blockquote>
+<p><img src="{33840438-8F71-4BF1-91D6-4021C79D138B}.png" alt="alt text"></p>
+<p><img src="{AA26AFA9-D510-42CA-BABE-FC1A3717E336}.png" alt="alt text"></p>
+<blockquote>
+<p>Se crean las tablas de particiones proporcionalmente ya que los discos de origen cuando se realizó la imagen del disco no tienen las mismas propiedades de almacenamiento que los de destino.</p>
+</blockquote>
+<p><img src="{1A763BF1-9D27-4CB3-93B2-D469EF5309AB}.png" alt="alt text"></p>
+<blockquote>
+<p>Primera opción, multicast ya explicada anteriormente.</p>
+</blockquote>
+<p><img src="{C2110A6F-342B-46DA-B4FF-ABD5656428CB}.png" alt="alt text"></p>
+<blockquote>
+<p>En este caso podemos usar el modo de número de clientes ya que son pocas máquinas (2) y es menos probable que falle alguna de ellas, en casos de clonación masiva es recomendable usar tiempos de espera.</p>
+</blockquote>
+<p><img src="{656BF33A-45C9-43DA-8EB3-142F4F6FDCEB}.png" alt="alt text"></p>
+<blockquote>
+<p>Servidor a la espera de que se complete el proceso de restauración</p>
+</blockquote>
+<p><img src="{37E2185B-0E98-4F7B-8EDB-43B616CDCA01}.png" alt="alt text"></p>
+<blockquote>
+<p>En este momento las máquinas clientes se encuentran en modo DHCP buscando el servidor para que les propague la restauración de imagen</p>
+</blockquote>
+<p><img src="{6C97832D-7569-4A56-9FAF-EA794BC9D1D2}.png" alt="alt text"></p>
+<blockquote>
+<p>Clientes ya conectados al servidor iniciando el proceso.</p>
+</blockquote>
+<p><img src="{04BD9B28-1821-494C-994B-7B7228EFA175}.png" alt="alt text"></p>
+<h3 id="inicio-del-proceso-de-restauraci%C3%B3n-en-las-dos-m%C3%A1quinas">Inicio del proceso de restauración en las dos máquinas:</h3>
+<blockquote>
+<p>Primer proceso conjunto</p>
+</blockquote>
+<p><img src="{DE785484-4ED6-4174-9AB1-87DEE58DB70B}.png" alt="alt text">
+<img src="{3BE1816E-24BF-4412-9C2B-15A8E72FD2F4}.png" alt="alt text"></p>
+<blockquote>
+<p>Segundo proceso conjunto</p>
+</blockquote>
+<p><img src="{61BABD0E-3FCD-4ECC-AEFA-80206F9D7F7C}.png" alt="alt text"></p>
+<blockquote>
+<p>Proceso de restauración completado con éxito en las dos máquinas clientes.</p>
+</blockquote>
+<h2 id="alt-textalt-text"><img src="{529E568B-94DD-476D-B8A7-E67478654BB7}.png" alt="alt text">
+<img src="{C8324202-7594-4F0A-9B1E-9EEED53C7C76}.png" alt="alt text"></h2>
+<p><img src="image-8.png" alt="alt text">
+<img src="image-7.png" alt="alt text"></p>
+
+</body>
+</html>
